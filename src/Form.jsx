@@ -20,13 +20,14 @@ const Form = ({persons, setPersons}) => {
     
         setPersons(persons.concat(newPersonObject))
         setNewName('')
+        setNewNumber('')
       }
 
     const handleNewNameTyping = (e) => {
         setNewName(e.target.value)
       }
     
-      const handleNewNumberTyping = (e) => {
+    const handleNewNumberTyping = (e) => {
         setNewNumber(e.target.value)
       }
 
