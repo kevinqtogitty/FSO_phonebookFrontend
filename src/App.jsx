@@ -3,18 +3,6 @@ import Form from './Form'
 import PhonebookList from './PhonebookList'
 import Search from './Search'
 
-// const SearchResults = ({searchName, persons}) => {
-//   const searchResults = persons.filter(person => persons.name === searchName)
-//   console.log(searchResults)
-
-//   return (
-//     <div>
-//       {/* {searchResults.map(<Persons key={person.id} persons={person.name} number={person.number}/>)} */} hello
-//     </div>
-//   )
-
-// }
-
 const App = () => {
   const [persons, setPersons] = useState([    
     { name: 'Arto Hellas', number: '040-123456', id: 1 },
