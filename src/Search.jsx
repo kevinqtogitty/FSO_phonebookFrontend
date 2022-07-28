@@ -6,16 +6,22 @@ import PhonebookList from "./PhonebookList";
 const Search = ({persons}) => {
     const [searchName, setSearchName] = useState('')
 
-    const searchResults = persons.filter(person => person.name.toLowerCase() === searchName)
-
     const handleSearchName = (e) => {
         setSearchName(e.target.value)
     }
 
+    const searchResults = persons.filter(person => {
+      if (searchName == ''){
+        return
+      }
+      else if (person.name.toLowerCase().includes(searchName.toLowerCase())) {
+        return person
+      }
+    })
+
     return (
       <div>
-        <input value={searchName} onChange={handleSearchName}/>
-        <button type='submit'>Search</button>
+        <p>Filter with the name: <input value={searchName} onChange={handleSearchName}/></p>
         <ul>
           <PhonebookList persons={searchResults} />
         </ul>

@@ -1,9 +1,16 @@
 import React from "react";
+import axios from "axios";
+import phonebookServices from "./services/phonebookServices";
+import Delete from "./Delete.jsx"
 
-const Persons = ({persons, key, number}) => {
+const Persons = ({person, id, number}) => {
+
     return (
-        <p key={key}>{persons}: {number}</p>
-    )
+        <div>
+            <li id={id}>{person}: {number} 
+            <button onClick={() => Delete.confirm(id)}>delete</button></li>
+        </div>
+    )   
 }
 
 export default Persons

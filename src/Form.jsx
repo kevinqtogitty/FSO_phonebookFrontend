@@ -1,7 +1,9 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import phonebookServices from "../src/services/phonebookServices.jsx"
 
-const Form = ({persons, setPersons}) => {
+const Form = ({persons, setPersons, setDisplayMessage}) => {
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
 
@@ -17,10 +19,18 @@ const Form = ({persons, setPersons}) => {
           number: newNumber,
           id: persons.length + 1
         }
-    
-        setPersons(persons.concat(newPersonObject))
-        setNewName('')
-        setNewNumber('')
+
+        phonebookServices
+          .create(newPersonObject)
+          .then(response => {
+            setPersons(persons.concat(newPersonObject))
+            setNewName('')
+            setNewNumber('')
+          })
+          .then(setDisplayMessage(`${newPersonObject.name} has been added to your phonebook`))
+          setTimeout(() => {
+            setDisplayMessage(null)
+          }, 5000)        
       }
 
     const handleNewNameTyping = (e) => {
